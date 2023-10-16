@@ -1,4 +1,4 @@
-package DSA;
+package StackQueue;
 
 import java.util.ArrayList;
 import java.util.List;

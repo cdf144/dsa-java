@@ -6,7 +6,7 @@
  * can be used on any data type that extends the Comparable interface.
  */
 
-package DSA.Sorting;
+package Sorting;
 
 import java.util.List;
 
