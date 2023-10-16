@@ -1,4 +1,4 @@
-package DSA.Sorting;
+package Sorting;
 
 import java.util.List;
 
@@ -36,26 +36,26 @@ public class HeapSort {
      * father is the element that was switched (or the element
      * that was the smallest in the previous subtree).
      * @param arr Array to max-heapify on
-     * @param i Index of father node of subtree
-     * @param n Array size for checking if a child does not exist
-     *          (out of bound)
+     * @param originalFather Index of father node of subtree
+     * @param arrSize Array size for checking if a child does not exist
+     *                (out of bound)
      */
-    private static <T extends Comparable<T>> void maxHeapify(List<T> arr, int i, int n) {
-        int largest = i;
-        int left = 2 * i + 1;
-        int right = 2 * i + 2;
+    private static <T extends Comparable<T>> void maxHeapify(List<T> arr, int originalFather, int arrSize) {
+        int father = originalFather;
+        int leftChild = 2 * originalFather + 1;
+        int rightChild = 2 * originalFather + 2;
 
-        if (left < n && arr.get(left).compareTo(arr.get(largest)) > 0) {
-            largest = left;
+        if (leftChild < arrSize && arr.get(leftChild).compareTo(arr.get(father)) > 0) {
+            father = leftChild;
         }
 
-        if (right < n && arr.get(right).compareTo(arr.get(largest)) > 0) {
-            largest = right;
+        if (rightChild < arrSize && arr.get(rightChild).compareTo(arr.get(father)) > 0) {
+            father = rightChild;
         }
 
-        if (largest != i) {
-            swap(arr, i, largest);
-            maxHeapify(arr, largest, n);
+        if (father != originalFather) {
+            swap(arr, originalFather, father);
+            maxHeapify(arr, father, arrSize);
         }
     }
 

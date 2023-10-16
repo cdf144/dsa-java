@@ -1,4 +1,4 @@
-package DSA.Sorting;
+package Sorting;
 
 import org.junit.BeforeClass;
 import org.junit.FixMethodOrder;

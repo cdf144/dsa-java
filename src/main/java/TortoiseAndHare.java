@@ -1,5 +1,3 @@
-package DSA;
-
 import java.io.BufferedWriter;
 import java.io.IOException;
 
