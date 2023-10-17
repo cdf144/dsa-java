@@ -11,6 +11,7 @@ public class BinaryInsertionSort {
         }
     }
 
+    // Find appropiate slot using Binary search
     private static <T extends Comparable<T>> int binarySearch(List<T> arr, int high, T key) {
         int low = 0;
         int mid = low + (high - low) / 2;
