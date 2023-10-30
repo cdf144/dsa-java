@@ -1,0 +1,10 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="ThreeSumFast4K" type="Application" factoryName="Application" folderName="ThreeSum">
+    <option name="MAIN_CLASS_NAME" value="edu.princeton.cs.algs4.ThreeSums.ThreeSumFast" />
+    <module name="data-structures-algorithms" />
+    <option name="PROGRAM_PARAMETERS" value="src/main/resources/4Kints.txt" />
+    <method v="2">
+      <option name="Make" enabled="true" />
+    </method>
+  </configuration>
+</component>

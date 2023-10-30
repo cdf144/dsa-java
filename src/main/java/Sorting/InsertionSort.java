@@ -6,19 +6,17 @@ public class InsertionSort {
     public static <T extends Comparable<T>> void sort(List<T> arr) {
         if (arr.isEmpty() || arr.size() == 1) return;
         for (int i = 1; i < arr.size(); i++) {
-            for (int j = i - 1; j >= 0; j--) {
-                if (arr.get(j).compareTo(arr.get(j + 1)) > 0) {
-                    swap(arr, j, j + 1);
+            T val = arr.get(i);
+            int j = i - 1;
+            while (j >= 0) {
+                if (val.compareTo(arr.get(j)) < 0) {
+                    arr.set(j + 1, arr.get(j));
                 } else {
                     break;
                 }
+                j--;
             }
+            arr.set(j + 1, val);
         }
-    }
-
-    private static <T extends Comparable<T>> void swap(List<T> arr, int idx1, int idx2) {
-        T tmp = arr.get(idx1);
-        arr.set(idx1, arr.get(idx2));
-        arr.set(idx2, tmp);
     }
 }

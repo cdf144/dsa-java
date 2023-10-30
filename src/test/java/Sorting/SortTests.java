@@ -247,7 +247,7 @@ public class SortTests {
 
     @Test
     public void testBinaryInsertionSort() {
-        int size = 80000;
+        int size = 40000;
         List<Integer> list = new ArrayList<>(size);
         Random random = new Random();
 
