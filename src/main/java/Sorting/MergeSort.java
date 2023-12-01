@@ -12,7 +12,8 @@ public class MergeSort {
             InsertionSort.sort(arr);
             return arr;
         }
-        int mid = arr.size() / 2;
+
+        int mid = arr.size() / 2 - 1;
 
         List<T> left = new ArrayList<>(arr.subList(0, mid));
         List<T> right = new ArrayList<>(arr.subList(mid, arr.size()));

@@ -1,7 +1,11 @@
+package Algorithms;
+
+import edu.princeton.cs.algs4.Stopwatch;
+
 import static java.lang.Math.sqrt;
 import static java.lang.Math.abs;
 
-public class Sqrt {
+public class SquareRoot {
     public static double mySqrt_linear(double x) {
         double DELTA = 0.0000000001;
         double y = 0.9, yy = y*y;
