@@ -1,15 +1,15 @@
-package GraphTree;
+package GraphTree.Graph;
 
 public class DepthFirstSearch {
     private boolean[] visited;
     private int count;
 
-    public DepthFirstSearch(UndirectedGraph G, int v) {
+    public DepthFirstSearch(Graph G, int v) {
         visited = new boolean[G.V()];
-
+        DFS(G, v);
     }
 
-    public void DFS(UndirectedGraph G, int v) {
+    public void DFS(Graph G, int v) {
         count++;
         visited[v] = true;
         for (int adj : G.adj(v)) {

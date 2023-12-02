@@ -1,37 +1,27 @@
-package GraphTree;
+package GraphTree.Tree;
 
-import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-public class MaxPriorityQueue {
-    public List<Integer> pq;
-    public int n;
-
+public class MaxPriorityQueue extends PriorityQueue {
     public MaxPriorityQueue() {
-        pq = new ArrayList<>();
-        n = 0;
+        super();
     }
 
     public MaxPriorityQueue(List<Integer> a) {
-        pq = new ArrayList<>(a);
-        n = a.size();
+        super(a);
     }
 
-    public boolean isEmpty() {
-        return n == 0;
-    }
-
-    public void sink(int k) {
+    protected void sink(int k) {
         int father = k;
         int leftChild = 2*k + 1;
         int rightChild = 2*k + 2;
 
-        if (leftChild < n && pq.get(leftChild).compareTo(pq.get(father)) > 0) {
+        if (leftChild < pq.size() && pq.get(leftChild).compareTo(pq.get(father)) > 0) {
             father = leftChild;
         }
 
-        if (rightChild < n && pq.get(rightChild).compareTo(pq.get(father)) > 0) {
+        if (rightChild < pq.size() && pq.get(rightChild).compareTo(pq.get(father)) > 0) {
             father = rightChild;
         }
 
@@ -41,13 +31,13 @@ public class MaxPriorityQueue {
         }
     }
 
-    public void swim(int k) {
+    protected void swim(int k) {
         if (k == 0) {
             return;
         }
 
         int father;
-        if (k % 2 == 0) {
+        if (k%2 == 0) {
             father = k/2 - 1;
         } else {
             father = k/2;
@@ -55,9 +45,7 @@ public class MaxPriorityQueue {
 
         if (pq.get(k).compareTo(pq.get(father)) > 0) {
             Collections.swap(pq, father, k);
-            swim(k);
+            swim(father);
         }
     }
-
-
 }

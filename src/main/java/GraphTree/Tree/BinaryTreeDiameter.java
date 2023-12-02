@@ -1,4 +1,4 @@
-package GraphTree;
+package GraphTree.Tree;
 
 public class BinaryTreeDiameter {
     static class Node {

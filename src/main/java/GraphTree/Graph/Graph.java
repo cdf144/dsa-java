@@ -1,19 +1,20 @@
-package GraphTree;
+package GraphTree.Graph;
 
 import java.util.LinkedList;
 import java.util.List;
 
-public class UndirectedGraph {
-    private final int V;
-    private int E;
-    private List<Integer>[] adj;
+public abstract class Graph {
+    protected final int V;
+    protected int E;
+    protected List<Integer>[] adj;
 
-    public UndirectedGraph(int v) {
+    public Graph(int v) {
         if (v < 0) {
             throw new IllegalArgumentException("Number of vertices must be non-negative");
         }
 
         V = v;
+        E = 0;
         adj = new LinkedList[v];
         for (int i = 0; i < v; i++) {
             adj[i] = new LinkedList<>();
@@ -29,17 +30,9 @@ public class UndirectedGraph {
     }
 
     public void validateVertex(int v) {
-        if (v >= 0 && v < V) {
+        if (v < 0 && v >= V) {
             throw new IllegalArgumentException("vertex " + v + " is not between 0 and " + (V-1));
         }
-    }
-
-    public void addEdge(int u, int v) {
-        validateVertex(u);
-        validateVertex(v);
-        E++;
-        adj[u].add(v);
-        adj[v].add(u);
     }
 
     public List<Integer> adj(int v) {
@@ -47,8 +40,5 @@ public class UndirectedGraph {
         return adj[v];
     }
 
-    public int degree(int v) {
-        validateVertex(v);
-        return adj[v].size();
-    }
+    public abstract void addEdge(int u, int v);
 }
