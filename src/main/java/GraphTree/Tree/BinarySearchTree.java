@@ -1,5 +1,8 @@
 package GraphTree.Tree;
 
+import java.util.ArrayDeque;
+import java.util.Queue;
+
 public class BinarySearchTree {
     private Node root;
 
@@ -15,22 +18,34 @@ public class BinarySearchTree {
 
     public BinarySearchTree() {}
 
-    public void put(int key) {
-        root = put(root, key);
+    public void insert(int key) {
+        root = insert(root, key);
     }
 
-    private Node put(Node x, int key) {
+    private Node insert(Node x, int key) {
         if (x == null) {
             return new Node(key);
         }
 
         if (key < x.key) {
-            x.left = put(x.left, key);
+            x.left = insert(x.left, key);
         } else if (key > x.key) {
-            x.right = put(x.right, key);
+            x.right = insert(x.right, key);
         }
 
         return x;
+    }
+
+    public int height() {
+        return height(root);
+    }
+
+    private int height(Node x) {
+        if (x == null) {
+            return -1;
+        }
+
+        return 1 + Math.max(height(x.left), height(x.right));
     }
 
     public void inorder() {
@@ -66,6 +81,26 @@ public class BinarySearchTree {
             postorder(x.left);
             postorder(x.right);
             System.out.println(x.key);
+        }
+    }
+
+    public void levelorder() {
+        levelorder(root);
+    }
+
+    private void levelorder(Node x) {
+        Queue<Node> queue = new ArrayDeque<>();
+        queue.add(x);
+        while (!queue.isEmpty()) {
+            Node node = queue.poll();
+            System.out.println(node.key);
+
+            if (node.left != null) {
+                queue.add(node.left);
+            }
+            if (node.right != null) {
+                queue.add(node.right);
+            }
         }
     }
 }

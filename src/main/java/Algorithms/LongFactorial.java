@@ -35,12 +35,12 @@ class Compute {
 
 public class LongFactorial {
     public static void main(String[] args) throws IOException {
-      BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
+        BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
 
-      int n = Integer.parseInt(bufferedReader.readLine().trim());
+        int n = Integer.parseInt(bufferedReader.readLine().trim());
 
-      Compute.extraLongFactorials(n);
+        Compute.extraLongFactorials(n);
 
-      bufferedReader.close();
+        bufferedReader.close();
     }
 }

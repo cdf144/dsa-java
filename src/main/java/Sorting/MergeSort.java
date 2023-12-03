@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MergeSort {
-    private static final int CUTOFF = 7;
+    private static final int CUTOFF = 8;
 
     public static <T extends Comparable<T>> List<T> sort(List<T> arr) {
         if (arr.size() <= 1) return arr;
@@ -13,7 +13,7 @@ public class MergeSort {
             return arr;
         }
 
-        int mid = arr.size() / 2 - 1;
+        int mid = arr.size() / 2;
 
         List<T> left = new ArrayList<>(arr.subList(0, mid));
         List<T> right = new ArrayList<>(arr.subList(mid, arr.size()));
