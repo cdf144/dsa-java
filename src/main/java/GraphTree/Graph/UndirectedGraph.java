@@ -1,6 +1,6 @@
 package GraphTree.Graph;
 
-public class UndirectedGraph extends Graph {
+public class UndirectedGraph extends UnweightedGraph {
     public UndirectedGraph(int v) {
         super(v);
     }

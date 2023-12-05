@@ -8,13 +8,13 @@ public class BreadthFirstSearch {
     private boolean[] visited;
     private int count;
 
-    public BreadthFirstSearch(Graph G, int v) {
+    public BreadthFirstSearch(UnweightedGraph G, int v) {
         queue = new ArrayDeque<>();
         visited = new boolean[G.V()];
         BFS(G, v);
     }
 
-    public void BFS(Graph G, int v) {
+    public void BFS(UnweightedGraph G, int v) {
         queue.add(v);
         visited[v] = true;
         count++;

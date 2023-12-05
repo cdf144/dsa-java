@@ -1,6 +1,6 @@
 package GraphTree.Graph;
 
-public class DirectedGraph extends Graph {
+public class DirectedGraph extends UnweightedGraph {
     private int[] indegree;
 
     public DirectedGraph(int v) {

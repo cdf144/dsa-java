@@ -3,12 +3,12 @@ package GraphTree.Graph;
 import java.util.LinkedList;
 import java.util.List;
 
-public abstract class Graph {
+public abstract class UnweightedGraph {
     protected final int V;
     protected int E;
     protected List<Integer>[] adj;
 
-    public Graph(int v) {
+    public UnweightedGraph(int v) {
         if (v < 0) {
             throw new IllegalArgumentException("Number of vertices must be non-negative");
         }
