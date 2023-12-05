@@ -27,7 +27,7 @@
  *
  ******************************************************************************/
 
-package edu.princeton.cs.algs4.GraphTree;
+package edu.princeton.cs.algs4.Tree;
 
 import edu.princeton.cs.algs4.*;
 

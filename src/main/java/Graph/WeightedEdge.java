@@ -1,4 +1,4 @@
-package GraphTree.Graph;
+package Graph;
 
 public class WeightedEdge implements Comparable<WeightedEdge> {
     private final int v;

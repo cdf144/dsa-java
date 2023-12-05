@@ -1,4 +1,4 @@
-package GraphTree.Graph;
+package Graph;
 
 public class DepthFirstSearch {
     private boolean[] visited;

@@ -1,4 +1,4 @@
-package GraphTree.Graph;
+package Graph;
 
 public class DirectedGraph extends UnweightedGraph {
     private int[] indegree;

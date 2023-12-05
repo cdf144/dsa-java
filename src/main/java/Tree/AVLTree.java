@@ -1,4 +1,4 @@
-package GraphTree.Tree;
+package Tree;
 
 public class AVLTree {
     private class Node {

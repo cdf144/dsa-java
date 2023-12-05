@@ -1,4 +1,4 @@
-package GraphTree.Tree;
+package Tree;
 
 import java.util.Collections;
 import java.util.List;

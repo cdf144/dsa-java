@@ -10,7 +10,7 @@
  *
  ******************************************************************************/
 
-package edu.princeton.cs.algs4.GraphTree;
+package edu.princeton.cs.algs4.Graphs;
 
 import edu.princeton.cs.algs4.DirectedEdge;
 import edu.princeton.cs.algs4.EdgeWeightedDigraph;

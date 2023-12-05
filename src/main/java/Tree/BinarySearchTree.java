@@ -1,4 +1,4 @@
-package GraphTree.Tree;
+package Tree;
 
 import java.util.ArrayDeque;
 import java.util.Queue;

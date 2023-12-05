@@ -1,4 +1,4 @@
-package GraphTree.Graph;
+package Graph;
 
 public class UndirectedGraph extends UnweightedGraph {
     public UndirectedGraph(int v) {

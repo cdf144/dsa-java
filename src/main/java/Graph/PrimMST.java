@@ -1,4 +1,4 @@
-package GraphTree.Graph;
+package Graph;
 
 import java.util.LinkedList;
 import java.util.PriorityQueue;
@@ -61,8 +61,7 @@ public class PrimMST {
 
     public Iterable<WeightedEdge> edges() {
         Queue<WeightedEdge> mst = new LinkedList<>();
-        for (int v = 0; v < edgeTo.length; v++) {
-            WeightedEdge e = edgeTo[v];
+        for (WeightedEdge e : edgeTo) {
             if (e != null) {
                 mst.add(e);
             }
