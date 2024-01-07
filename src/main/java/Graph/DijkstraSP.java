@@ -1,79 +1,72 @@
 package Graph;
 
-import java.util.PriorityQueue;
-import java.util.Stack;
+import java.util.NoSuchElementException;
 
-class Cost {
-    int v;
-    double dist;
+class IndexMinPQ<Key extends Comparable<Key>> {
+    private int maxSize;
+    private int size;
+    private int[] pq;
+    private int[] qp;
+    private Key[] keys;
 
-    public Cost(int v, double dist) {
-        this.v = v;
-        this.dist = dist;
+    public IndexMinPQ(int maxSize) {
+        if (maxSize < 0) {
+            throw new IllegalArgumentException();
+        }
+
+        this.maxSize = maxSize;
+        size = 0;
+        keys = (Key[]) new Comparable[maxSize + 1];
+        pq = new int[maxSize + 1];
+        qp = new int[maxSize + 1];
+        for (int i = 0; i <= maxSize; i++) {
+            qp[i] = -1;
+        }
     }
 
-    public int vertex() {
-        return v;
+    private void validateIndex(int i) {
+        if (i < 0) {
+            throw new IllegalArgumentException("index is negative: " + i);
+        }
+        if (i >= maxSize) {
+            throw new IllegalArgumentException("index >= capacity: " + i);
+        }
     }
 
-    public double dist() {
-        return dist;
+    public boolean isEmpty() {
+        return size == 0;
+    }
+
+    public boolean contains(int i) {
+        validateIndex(i);
+        return qp[i] != -1;
+    }
+
+    public int size() {
+        return size;
+    }
+
+    public void insert(int i, Key key) {
+        validateIndex(i);
+        if (contains(i)) {
+            throw new IllegalArgumentException("index is already in the priority queue");
+        }
+        size++;
+        qp[i] = size;
+        pq[size] = i;
+        keys[i] = key;
+    }
+
+    public int minIndex() {
+        if (size == 0) {
+            throw new NoSuchElementException("Priority queue underflow");
+        }
+        return pq[1];
     }
 }
 
 public class DijkstraSP {
     private double[] distTo;
     private WeightedEdge[] edgeTo;
-    private PriorityQueue<Cost> pq;
 
-    public DijkstraSP(EdgeWeightedGraph G, int s) {
-        distTo = new double[G.V()];
-        edgeTo = new WeightedEdge[G.V()];
-
-        for (int v = 0; v < G.V(); v++) {
-            distTo[v] = Double.POSITIVE_INFINITY;
-        }
-        distTo[s] = 0.0;
-
-        pq = new PriorityQueue<>((c1, c2) -> Double.compare(c1.dist(), c2.dist()));
-        pq.add(new Cost(s, distTo[s]));
-        while (!pq.isEmpty()) {
-            Cost cost = pq.poll();
-            for (WeightedEdge e : G.adj(cost.vertex())) {
-                relax(e, cost.vertex());
-            }
-        }
-    }
-
-    private void relax(WeightedEdge e, int v) {
-        int w = e.other(v);
-        if (distTo[w] > distTo[v] + e.weight()) {
-            distTo[w] = distTo[v] + e.weight();
-            edgeTo[w] = e;
-            pq.add(new Cost(w, distTo[w]));
-        }
-    }
-
-    public double distTo(int v) {
-        return distTo[v];
-    }
-
-    public boolean hasPathTo(int v) {
-        return distTo[v] < Double.POSITIVE_INFINITY;
-    }
-
-    public Iterable<WeightedEdge> pathTo(int v) {
-        if (!hasPathTo(v)) {
-            return null;
-        }
-
-        Stack<WeightedEdge> path = new Stack<>();
-        int x = v;
-        for (WeightedEdge e = edgeTo[v]; e != null; e = edgeTo[x]) {
-            path.push(e);
-            x = e.other(x);
-        }
-
-        return path;
-    }
 }

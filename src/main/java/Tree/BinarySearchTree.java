@@ -7,30 +7,30 @@ public class BinarySearchTree {
     private Node root;
 
     private class Node {
-        private final int key;
+        private final int val;
         private Node left, right;
 
         public Node(int value) {
-            this.key = value;
+            this.val = value;
             left = right = null;
         }
     }
 
     public BinarySearchTree() {}
 
-    public void insert(int key) {
-        root = insert(root, key);
+    public void insert(int val) {
+        root = insert(root, val);
     }
 
-    private Node insert(Node x, int key) {
+    private Node insert(Node x, int val) {
         if (x == null) {
-            return new Node(key);
+            return new Node(val);
         }
 
-        if (key < x.key) {
-            x.left = insert(x.left, key);
-        } else if (key > x.key) {
-            x.right = insert(x.right, key);
+        if (val < x.val) {
+            x.left = insert(x.left, val);
+        } else if (val > x.val) {
+            x.right = insert(x.right, val);
         }
 
         return x;
@@ -48,6 +48,79 @@ public class BinarySearchTree {
         return 1 + Math.max(height(x.left), height(x.right));
     }
 
+    public int min() {
+        return min(root).val;
+    }
+
+    private Node min(Node x) {
+        if (x.left == null) {
+            return x;
+        } else {
+            return min(x.left);
+        }
+    }
+
+    public int max() {
+        return max(root).val;
+    }
+
+    private Node max(Node x) {
+        if (x.right == null) {
+            return x;
+        } else {
+            return max(x.right);
+        }
+    }
+
+    public void delMax() {
+        root = delMax(root);
+    }
+
+    private Node delMax(Node x) {
+        if (x.right == null) {
+            return x.left;
+        }
+        x.right = delMax(x.right);
+        return x;
+    }
+
+    public void delMin() {
+        root = delMin(root);
+    }
+
+    private Node delMin(Node x) {
+        if (x.left == null) {
+            return x.right;
+        }
+        x.left = delMin(x.left);
+        return x;
+    }
+
+    private Node delete(Node x, int val) {
+        if (x == null) {
+            return null;
+        }
+
+        if (val < x.val) {
+            x.left = delete(x.left, val);
+        } else if (val > x.val) {
+            x.right = delete(x.right, val);
+        } else {
+            if (x.right == null) {
+                return x.left;
+            }
+            if (x.left == null) {
+                return x.right;
+            }
+            Node t = x;
+            x = min(t);
+            x.right = delMin(t.right);
+            x.left = t.left;
+        }
+
+        return x;
+    }
+
     public void inorder() {
         inorder(root);
     }
@@ -55,7 +128,7 @@ public class BinarySearchTree {
     private void inorder(Node x) {
         if (x != null) {
             inorder(x.left);
-            System.out.println(x.key);
+            System.out.println(x.val);
             inorder(x.right);
         }
     }
@@ -66,7 +139,7 @@ public class BinarySearchTree {
 
     private void preorder(Node x) {
         if (x != null) {
-            System.out.println(x.key);
+            System.out.println(x.val);
             preorder(x.left);
             preorder(x.right);
         }
@@ -80,7 +153,7 @@ public class BinarySearchTree {
         if (x != null) {
             postorder(x.left);
             postorder(x.right);
-            System.out.println(x.key);
+            System.out.println(x.val);
         }
     }
 
@@ -93,7 +166,7 @@ public class BinarySearchTree {
         queue.add(x);
         while (!queue.isEmpty()) {
             Node node = queue.poll();
-            System.out.println(node.key);
+            System.out.println(node.val);
 
             if (node.left != null) {
                 queue.add(node.left);

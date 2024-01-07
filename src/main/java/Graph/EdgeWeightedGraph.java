@@ -37,7 +37,7 @@ public class EdgeWeightedGraph {
             while (v2 == v1) {
                 v2 = random.nextInt(V);
             }
-            double weight = 0.01 * random.nextInt(1, 100);
+            double weight = 0.01 * random.nextInt(100);
             addEdge(v1, v2, weight);
         }
     }

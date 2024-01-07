@@ -32,7 +32,7 @@ public class LomutoQuickSort {
         T pivotVal = arr.get(high); // rightmost element as index
         for (int i = low; i < high; i++) {
             if (arr.get(i).compareTo(pivotVal) < 0) {
-                // values larger than pivot gets swapped to the left
+                // values smaller than pivot gets swapped to the left
                 swap(arr, i, pivotIndex);
                 pivotIndex++; // iterate temporary pivot index
             }

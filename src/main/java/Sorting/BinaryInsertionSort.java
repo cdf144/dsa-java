@@ -6,7 +6,7 @@ public class BinaryInsertionSort {
     public static <T extends Comparable<T>> void sort(List<T> arr) {
         if (arr.isEmpty() || arr.size() == 1) return;
         for (int i = 1; i < arr.size(); i++) {
-            int location = binarySearch(arr, i - 1, arr.get(i));
+            int location = binarySearch(arr, i, arr.get(i));
             insert(arr, i, location);
         }
     }
@@ -14,20 +14,16 @@ public class BinaryInsertionSort {
     // Find right slot using Binary search
     private static <T extends Comparable<T>> int binarySearch(List<T> arr, int high, T key) {
         int low = 0;
-        int mid = low + (high - low) / 2;
         while (low < high) {
-            if (arr.get(mid).compareTo(key) == 0) {
-                return mid + 1;
-            }
-            if (arr.get(mid).compareTo(key) < 0) {
-                low = mid + 1;
+            int mid = low + (high - low) / 2;
+            if (arr.get(mid).compareTo(key) > 0) {
+                high = mid;
             } else {
-                high = mid - 1;
+                low = mid + 1;
             }
-            mid = low + (high - low) / 2;
         }
-        if (arr.get(mid).compareTo(key) <= 0) return mid + 1;
-        return mid;
+
+        return low;
     }
 
     private static <T extends Comparable<T>> void insert(List<T> arr, int high, int location) {

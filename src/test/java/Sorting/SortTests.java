@@ -26,8 +26,8 @@ public class SortTests {
         private final long startTime;
 
         /**
-         * Stopwatch constructor. Start is the program (CPU)
-         * startTime time in miliseconds.
+         * Stopwatch constructor. Start is the program startTime
+         * (wall-clock time) time in miliseconds.
          */
         public Stopwatch() {
             this.startTime = System.currentTimeMillis();
@@ -36,7 +36,7 @@ public class SortTests {
         /**
          * Calculate the elapsed CPU time (how long it has
          * been since the program started)
-         * @return Elapsed time (CPU)
+         * @return Elapsed time (wall-clock time)
          */
         public double elapsedTime() {
             long currentTime = System.currentTimeMillis();

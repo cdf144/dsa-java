@@ -13,6 +13,9 @@ public abstract class PriorityQueue {
 
     public PriorityQueue(List<Integer> a) {
         pq = new ArrayList<>(a);
+        for (int i = pq.size() / 2 - 1; i >= 0; i--) {
+            sink(i);
+        }
     }
 
     public boolean isEmpty() {
